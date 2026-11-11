@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 — Clinical System Error | AYN RUYAH</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/branding/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/branding/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+<body class="error-page-wrapper">
+    <!-- Header -->
+    <header class="error-header">
+        <a href="/" class="brand-link" title="AYN RUYAH Clinical Platform">
+            <img src="/assets/branding/ayn_ruyah_logo.png" alt="AYN RUYAH عين رؤية" class="brand-logo" onerror="this.src='/assets/branding/ayn_ruyah_logo.svg'">
+        </a>
+        <div class="header-status">
+            <span class="text-xs font-semibold text-rose-700 bg-rose-50 px-3 py-1.5 rounded-full border border-rose-200">
+                <i class="fas fa-heartbeat mr-1 text-rose-600"></i> Auto-Recovery Protocol Active
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="error-content-container">
+        <div class="error-card">
+            <div class="error-visual-badge badge-500">
+                <i class="fas fa-exclamation-triangle"></i> HTTP 500 &bull; Diagnostic Service Alert
+            </div>
+
+            <div class="error-illustration" aria-hidden="true">
+                <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer optical ring -->
+                    <circle cx="70" cy="70" r="62" stroke="#DC2626" stroke-width="2" stroke-dasharray="4 4" opacity="0.4"/>
+                    <circle cx="70" cy="70" r="48" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5" opacity="0.6"/>
+                    <!-- Eye contour with diagnostic alert -->
+                    <path d="M26 70C26 70 44 42 70 42C96 42 114 70 114 70C114 70 96 98 70 98C44 98 26 70 26 70Z" fill="#FFFFFF" stroke="#DC2626" stroke-width="2.5" stroke-linejoin="round"/>
+                    <circle cx="70" cy="70" r="18" fill="#F87171" opacity="0.25"/>
+                    <circle cx="70" cy="70" r="10" fill="#DC2626"/>
+                    <!-- Telemetry pulse line -->
+                    <path d="M40 70H56L62 58L68 82L74 64L80 74L84 70H100" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Alert Badge -->
+                    <circle cx="102" cy="38" r="14" fill="#DC2626"/>
+                    <text x="102" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">!</text>
+                </svg>
+            </div>
+
+            <h1 class="error-title">Clinical Service Interruption</h1>
+            <p class="error-description">
+                The diagnostic engine encountered an unexpected runtime condition while processing your request. Our automated clinical telemetry has captured this event.
+            </p>
+
+            <div class="error-clinical-notice">
+                <i class="fas fa-stethoscope text-teal-600"></i>
+                <div>
+                    <strong class="text-navy block font-semibold">Clinical Data Advisory:</strong>
+                    <span>Please verify the screening record and patient file in the screening audit log before proceeding with clinical evaluation. If necessary, re-run the screening scan.</span>
+                </div>
+            </div>
+
+            <div class="error-actions">
+                <button type="button" onclick="window.location.reload()" class="btn-error-primary">
+                    <i class="fas fa-redo"></i> Retry Operation
+                </button>
+                <a href="/" class="btn-error-secondary">
+                    <i class="fas fa-home"></i> Return to Dashboard
+                </a>
+            </div>
+
+            <div class="mt-4 text-xs text-slate-500 font-mono">
+                Incident Ref: <span id="incident-id">AYN-INC-202611-SYS</span>
+            </div>
+
+            <div class="error-quick-links">
+                <a href="/api/health"><i class="fas fa-heartbeat mr-1"></i> System Health</a>
+                <a href="/"><i class="fas fa-stethoscope mr-1"></i> Return Home</a>
+                <a href="mailto:support@aynruyah.health"><i class="fas fa-envelope mr-1"></i> Technical Support</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="error-footer">
+        <p>&copy; 2026 AYN RUYAH (<span class="arabic">عين رؤية</span>) &bull; Enterprise Multi-Tenant AI Retinal Screening Platform</p>
+    </footer>
+
+    <script>
+        // Server issues and logs incident reference; displayed via server substitution or response header
+        (function() {
+            var el = document.getElementById('incident-id');
+            if (el && (!el.innerText || el.innerText.trim() === '')) {
+                el.innerText = 'AYN-INC-SERVER-REF';
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Clinical Page Not Found | AYN RUYAH</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/branding/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/branding/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+<body class="error-page-wrapper">
+    <!-- Header -->
+    <header class="error-header">
+        <a href="/" class="brand-link" title="AYN RUYAH Clinical Platform">
+            <img src="/assets/branding/ayn_ruyah_logo.png" alt="AYN RUYAH عين رؤية" class="brand-logo" onerror="this.src='/assets/branding/ayn_ruyah_logo.svg'">
+        </a>
+        <div class="header-status">
+            <span class="text-xs font-semibold text-teal-700 bg-teal-50 px-3 py-1.5 rounded-full border border-teal-200">
+                <i class="fas fa-shield-alt mr-1 text-teal-600"></i> Clinical Core Online
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="error-content-container">
+        <div class="error-card">
+            <div class="error-visual-badge badge-404">
+                <i class="fas fa-search-location"></i> HTTP 404 &bull; Resource Unreachable
+            </div>
+
+            <div class="error-illustration" aria-hidden="true">
+                <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer optical ring -->
+                    <circle cx="70" cy="70" r="62" stroke="#087E8B" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.4"/>
+                    <circle cx="70" cy="70" r="48" fill="#F0F9F9" stroke="#087E8B" stroke-width="1.5" opacity="0.6"/>
+                    <!-- Sclera / eye contour -->
+                    <path d="M26 70C26 70 44 42 70 42C96 42 114 70 114 70C114 70 96 98 70 98C44 98 26 70 26 70Z" fill="#FFFFFF" stroke="#142D4E" stroke-width="2.5" stroke-linejoin="round"/>
+                    <!-- Iris with gradient -->
+                    <defs>
+                        <linearGradient id="iris404" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#087E8B"/>
+                            <stop offset="100%" stop-color="#006B70"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="70" cy="70" r="20" fill="url(#iris404)"/>
+                    <!-- Pupil -->
+                    <circle cx="70" cy="70" r="9" fill="#142D4E"/>
+                    <!-- Retinal crosshairs -->
+                    <path d="M70 24V34M70 106V116M24 70H34M106 70H116" stroke="#087E8B" stroke-width="2" stroke-linecap="round"/>
+                    <!-- Light reflection -->
+                    <circle cx="73" cy="67" r="3" fill="#FFFFFF" opacity="0.9"/>
+                    <!-- Question mark badge -->
+                    <circle cx="102" cy="38" r="14" fill="#087E8B"/>
+                    <text x="102" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">?</text>
+                </svg>
+            </div>
+
+            <h1 class="error-title">Clinical Resource Not Found</h1>
+            <p class="error-description">
+                The requested clinical route, screening session, or patient identifier could not be located in this hospital workspace.
+            </p>
+
+            <div class="error-clinical-notice">
+                <i class="fas fa-info-circle"></i>
+                <span>All registered patients, uploaded fundus scans, and AI inference pipelines remain completely secure.</span>
+            </div>
+
+            <div class="error-actions">
+                <a href="/" class="btn-error-primary">
+                    <i class="fas fa-home"></i> Return to Clinical Dashboard
+                </a>
+                <a href="/#screening" class="btn-error-secondary">
+                    <i class="fas fa-microscope"></i> Start AI Screening
+                </a>
+            </div>
+
+            <div class="error-quick-links">
+                <a href="/#patients"><i class="fas fa-users mr-1"></i> Patient Directory</a>
+                <a href="/#analytics"><i class="fas fa-chart-line mr-1"></i> Hospital Analytics</a>
+                <a href="/#reports"><i class="fas fa-file-medical-alt mr-1"></i> Diagnostic Reports</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="error-footer">
+        <p>&copy; 2026 AYN RUYAH (<span class="arabic">عين رؤية</span>) &bull; Enterprise Multi-Tenant AI Retinal Screening Platform</p>
+    </footer>
+</body>
+</html>

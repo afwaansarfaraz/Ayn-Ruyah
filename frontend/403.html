@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 — Access Forbidden | AYN RUYAH</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/branding/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/branding/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+<body class="error-page-wrapper">
+    <!-- Header -->
+    <header class="error-header">
+        <a href="/" class="brand-link" title="AYN RUYAH Clinical Platform">
+            <img src="/assets/branding/ayn_ruyah_logo.png" alt="AYN RUYAH عين رؤية" class="brand-logo" onerror="this.src='/assets/branding/ayn_ruyah_logo.svg'">
+        </a>
+        <div class="header-status">
+            <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200">
+                <i class="fas fa-lock mr-1 text-amber-600"></i> Role Isolation Active
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="error-content-container">
+        <div class="error-card">
+            <div class="error-visual-badge badge-403">
+                <i class="fas fa-user-shield"></i> HTTP 403 &bull; Authorization Required
+            </div>
+
+            <div class="error-illustration" aria-hidden="true">
+                <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer security perimeter ring -->
+                    <circle cx="70" cy="70" r="62" stroke="#D97706" stroke-width="2" stroke-dasharray="5 5" opacity="0.4"/>
+                    <circle cx="70" cy="70" r="48" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5" opacity="0.5"/>
+                    <!-- Shield shape -->
+                    <path d="M70 28L98 40V68C98 86 86 102 70 108C54 102 42 86 42 68V40L70 28Z" fill="#FFFFFF" stroke="#D97706" stroke-width="2.5" stroke-linejoin="round"/>
+                    <!-- Eye silhouette inside shield -->
+                    <path d="M52 68C52 68 59 56 70 56C81 56 88 68 88 68C88 68 81 80 70 80C59 80 52 68 52 68Z" stroke="#142D4E" stroke-width="2" fill="#F0F9F9"/>
+                    <circle cx="70" cy="68" r="6" fill="#087E8B"/>
+                    <!-- Lock Emblem -->
+                    <circle cx="102" cy="38" r="14" fill="#D97706"/>
+                    <!-- Small lock icon inside circle -->
+                    <rect x="97" y="37" width="10" height="8" rx="1.5" fill="#FFFFFF"/>
+                    <path d="M99 37V33C99 31.34 100.34 30 102 30C103.66 30 105 31.34 105 33V37" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <h1 class="error-title">Clinical Access Restricted</h1>
+            <p class="error-description">
+                You do not have the verified clinical privileges or workspace credentials required to access this patient cohort, hospital tenant, or administrative view.
+            </p>
+
+            <div class="error-clinical-notice">
+                <i class="fas fa-shield-alt text-amber-600"></i>
+                <span>Strict multi-tenant workspace isolation is enforced to protect hospital patient data and prevent unauthorized cross-tenant access.</span>
+            </div>
+
+            <div class="error-actions">
+                <button type="button" onclick="window.history.length > 1 ? window.history.back() : window.location.href='/'" class="btn-error-primary">
+                    <i class="fas fa-arrow-left"></i> Go Back to Previous View
+                </button>
+                <a href="/" class="btn-error-secondary">
+                    <i class="fas fa-home"></i> Return to Dashboard
+                </a>
+            </div>
+
+            <div class="error-quick-links">
+                <a href="/#settings"><i class="fas fa-hospital mr-1"></i> Hospital Workspace</a>
+                <a href="/#patients"><i class="fas fa-user-md mr-1"></i> Authorized Cohorts</a>
+                <a href="mailto:admin@aynruyah.health"><i class="fas fa-headset mr-1"></i> Contact Administrator</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="error-footer">
+        <p>&copy; 2026 AYN RUYAH (<span class="arabic">عين رؤية</span>) &bull; Enterprise Multi-Tenant AI Retinal Screening Platform</p>
+    </footer>
+</body>
+</html>

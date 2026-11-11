@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AYN RUYAH (عين رؤية) — Enterprise Multi-Tenant AI-Powered Diabetic Retinopathy Screening SaaS Platform. Automated 5-Grade ICDR Retinal Fundus Evaluation & Grad-CAM Explainability for Ophthalmology Clinics.">
+    <meta name="keywords" content="diabetic retinopathy, ophthalmology AI, retinal screening, fundus examination, Grad-CAM, deep learning, EfficientNet-B4, ICDR grading">
+    <meta name="author" content="AYN RUYAH Clinical Technologies">
+    <link rel="canonical" href="https://aynruyah.health/">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aynruyah.health/">
+    <meta property="og:title" content="AYN RUYAH (عين رؤية) — A New Vision for Eye Care">
+    <meta property="og:description" content="AI-Powered 5-Grade Diabetic Retinopathy Screening & Explainable Deep Learning for Ophthalmology Facilities.">
+    <meta property="og:image" content="/assets/branding/ayn_ruyah_logo.png">
+    <meta property="og:site_name" content="AYN RUYAH">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://aynruyah.health/">
+    <meta name="twitter:title" content="AYN RUYAH (عين رؤية) — A New Vision for Eye Care">
+    <meta name="twitter:description" content="AI-Powered 5-Grade Diabetic Retinopathy Screening & Explainable Deep Learning.">
+    <meta name="twitter:image" content="/assets/branding/ayn_ruyah_logo.png">
+
+    <title>AYN RUYAH | AI Diabetic Retinopathy Screening Platform</title>
+
+    <!-- Brand Favicons & Touch Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/branding/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/branding/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/branding/ayn_ruyah_icon_192.png">
+
+    <!-- Fonts: Plus Jakarta Sans & Noto Sans Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons 6 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Chart.js for clinical epidemiology -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- jsPDF for clinical report generation -->
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+    <!-- Tailwind CSS (Utility layer) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#087E8B',
+                        'primary-dark': '#006B70',
+                        'primary-light': '#E6F6F7',
+                        navy: '#142D4E',
+                        'navy-muted': '#4B6584',
+                        surface: '#FFFFFF',
+                        appbg: '#F5FAFF',
+                        lightbg: '#EAF4FF'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- AYN RUYAH Modular CSS Design System -->
+    <link rel="stylesheet" href="/css/main.css?v=3.3">
+
+    <style>
+        .glass-medical {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(8, 126, 139, 0.12);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#F5FAFF] text-[#142D4E] antialiased overflow-x-hidden">
+
+    <!-- Mobile Drawer Backdrop -->
+    <div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-[#0A1C33]/50 z-40 hidden backdrop-blur-xs transition-opacity"></div>
+
+    <!-- ==================== 1. MULTI-TENANT LOGIN PAGE ==================== -->
+    <div id="login-page" class="app-page min-h-screen w-full flex items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-[#F5FAFF] via-[#EAF4FF] to-[#E6F6F7] relative">
+        <!-- Ambient decorative blur circles -->
+        <div class="absolute top-10 left-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="glass-medical max-w-lg w-full p-8 sm:p-10 rounded-[28px] shadow-xl relative border border-[#D0E3F3] z-10">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#087E8B] via-[#16A779] to-[#0284C7] rounded-t-[28px]"></div>
+            
+            <!-- AYN RUYAH Official Brand Header -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center mb-3">
+                    <img src="/assets/branding/ayn_ruyah_logo.png" alt="AYN RUYAH عين رؤية" class="h-16 w-auto object-contain drop-shadow-sm">
+                </div>
+                <div class="flex items-center justify-center gap-2 mt-1">
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-[#087E8B] bg-[#E6F6F7] px-3 py-0.5 rounded-full border border-teal-200">
+                        Multi-Tenant Clinical SaaS
+                    </span>
+                    <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-500">
+                        v3.3
+                    </span>
+                </div>
+                <p class="text-xs text-[#4B6584] mt-2 font-medium">Enterprise Retinal Screening & Tele-Ophthalmology Solution</p>
+            </div>
+
+            <form class="space-y-4" onsubmit="event.preventDefault(); handleLogin();">
+                <!-- Hospital Workspace Selector -->
+                <div>
+                    <label for="login-hospital-select" class="text-[11px] uppercase tracking-wider font-bold text-[#142D4E] block mb-1.5">
+                        <i class="fas fa-hospital text-[#087E8B] mr-1"></i> Hospital / Screening Workspace
+                    </label>
+                    <select id="login-hospital-select" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-4 py-2.5 outline-none text-sm text-[#142D4E] focus:border-[#087E8B] focus:ring-2 focus:ring-teal-100 transition-all font-medium">
+                        <!-- Dynamically populated from backend /api/auth/hospitals -->
+                    </select>
+                </div>
+
+                <!-- Username -->
+                <div>
+                    <label for="login-username" class="text-[11px] uppercase tracking-wider font-bold text-[#142D4E] block mb-1.5">
+                        <i class="fas fa-user text-[#087E8B] mr-1"></i> Staff Username
+                    </label>
+                    <input type="text" id="login-username" value="" placeholder="e.g. dr_saxena" autocomplete="username" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-4 py-2.5 outline-none focus:border-[#087E8B] focus:ring-2 focus:ring-teal-100 transition-all text-sm text-[#142D4E]" required>
+                </div>
+                
+                <!-- Password -->
+                <div>
+                    <label for="login-password" class="text-[11px] uppercase tracking-wider font-bold text-[#142D4E] block mb-1.5">
+                        <i class="fas fa-key text-[#087E8B] mr-1"></i> Password
+                    </label>
+                    <input type="password" id="login-password" value="" placeholder="••••••••" autocomplete="current-password" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-4 py-2.5 outline-none focus:border-[#087E8B] focus:ring-2 focus:ring-teal-100 transition-all text-sm text-[#142D4E]" required>
+                </div>
+
+                <!-- Demo Fast-Fill Chips (Rendered only when backend reports demo/dev mode) -->
+                <div id="demo-login-chips" class="pt-2 hidden">
+                    <p class="text-[11px] uppercase font-bold text-[#4B6584] mb-2 flex items-center justify-between">
+                        <span>Quick Demo Staff Logins:</span>
+                        <span class="text-[10px] text-teal-600 font-semibold cursor-pointer" onclick="fillDemoLogin('admin')">Reset Default</span>
+                    </p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" onclick="fillDemoLogin('admin')" class="p-2.5 rounded-xl bg-white hover:bg-[#EAF4FF] border border-[#D0E3F3] hover:border-teal-300 text-left transition-all shadow-xs group">
+                            <span class="font-bold text-[#087E8B] text-xs block group-hover:text-teal-700">Lucknow</span>
+                            <span class="text-[#4B6584] text-[10px]">Admin</span>
+                        </button>
+                        <button type="button" onclick="fillDemoLogin('doctor')" class="p-2.5 rounded-xl bg-white hover:bg-[#EAF4FF] border border-[#D0E3F3] hover:border-blue-300 text-left transition-all shadow-xs group">
+                            <span class="font-bold text-blue-600 text-xs block group-hover:text-blue-800">Delhi</span>
+                            <span class="text-[#4B6584] text-[10px]">Doctor</span>
+                        </button>
+                        <button type="button" onclick="fillDemoLogin('screener')" class="p-2.5 rounded-xl bg-white hover:bg-[#EAF4FF] border border-[#D0E3F3] hover:border-emerald-300 text-left transition-all shadow-xs group">
+                            <span class="font-bold text-emerald-600 text-xs block group-hover:text-emerald-800">Bengaluru</span>
+                            <span class="text-[#4B6584] text-[10px]">Operator</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button type="submit" id="login-submit-btn" class="w-full bg-[#087E8B] hover:bg-[#066671] active:bg-[#05545D] text-white font-bold py-3.5 rounded-xl transition-all shadow-md shadow-teal-700/20 text-sm mt-3 flex items-center justify-center gap-2">
+                    <i class="fas fa-sign-in-alt"></i> Connect to Screening Workspace
+                </button>
+            </form>
+
+            <div class="mt-6 pt-4 border-t border-[#E2EEF8] text-center space-y-1">
+                <p class="text-[11px] text-[#4B6584] font-medium">Strict Multi-Tenant Isolation • HIPAA & DISA Compliant Architecture</p>
+                <p class="text-[10px] text-[#8395A7]">EfficientNet-B4 AI Core • Verified 5-Grade ICDR Diabetic Retinopathy Classification</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==================== 2. MAIN APPLICATION SAAS SHELL ==================== -->
+    <div id="app-shell" class="app-page hidden min-h-screen flex flex-col md:flex-row bg-[#F5FAFF]">
+        <!-- Sidebar Navigation -->
+        <aside id="main-sidebar" class="w-72 max-w-[85vw] md:w-64 bg-white border-r border-[#E2EEF8] flex flex-col shrink-0 shadow-xl md:shadow-xs z-50 md:z-40 fixed md:static inset-y-0 left-0 -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out">
+            <!-- Brand Box -->
+            <div class="h-20 px-5 border-b border-[#E2EEF8] flex items-center justify-between bg-white">
+                <a href="#" onclick="switchNav('dashboard'); return false;" class="flex items-center gap-2.5 overflow-hidden">
+                    <img src="/assets/branding/ayn_ruyah_logo.png" alt="AYN RUYAH عين رؤية" class="h-10 w-auto object-contain">
+                </a>
+                <button onclick="toggleMobileSidebar()" class="md:hidden text-[#8395A7] hover:text-[#142D4E] p-1.5 rounded-lg hover:bg-slate-100" aria-label="Close Sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="p-3.5 space-y-1 flex-1 overflow-y-auto">
+                <div class="text-[10px] uppercase tracking-wider font-bold text-[#8395A7] px-3 py-2">
+                    Clinical Navigation
+                </div>
+
+                <button onclick="switchNav('dashboard'); closeMobileSidebar();" data-tab="dashboard" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all text-[#4B6584] hover:bg-[#EAF4FF] hover:text-[#087E8B] text-left">
+                    <i class="fas fa-chart-line w-5 text-center"></i>
+                    <span>Dashboard</span>
+                </button>
+
+                <button onclick="switchNav('patients'); closeMobileSidebar();" data-tab="patients" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all text-[#4B6584] hover:bg-[#EAF4FF] hover:text-[#087E8B] text-left">
+                    <i class="fas fa-users w-5 text-center"></i>
+                    <span>Diabetic Patients</span>
+                </button>
+
+                <button onclick="switchNav('screening'); closeMobileSidebar();" data-tab="screening" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all text-[#4B6584] hover:bg-[#EAF4FF] hover:text-[#087E8B] text-left">
+                    <i class="fas fa-eye w-5 text-center"></i>
+                    <span>AI Retinal Screening</span>
+                </button>
+
+                <button onclick="switchNav('analytics'); closeMobileSidebar();" data-tab="analytics" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all text-[#4B6584] hover:bg-[#EAF4FF] hover:text-[#087E8B] text-left">
+                    <i class="fas fa-chart-pie w-5 text-center"></i>
+                    <span>Clinical Analytics</span>
+                </button>
+
+                <button onclick="switchNav('reports'); closeMobileSidebar();" data-tab="reports" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all text-[#4B6584] hover:bg-[#EAF4FF] hover:text-[#087E8B] text-left">
+                    <i class="fas fa-file-medical w-5 text-center"></i>
+                    <span>Screening Reports</span>
+                </button>
+
+                <div class="text-[10px] uppercase tracking-wider font-bold text-[#8395A7] px-3 pt-4 pb-2">
+                    Administration
+                </div>
+
+                <button onclick="switchNav('settings'); closeMobileSidebar();" data-tab="settings" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all text-[#4B6584] hover:bg-[#EAF4FF] hover:text-[#087E8B] text-left">
+                    <i class="fas fa-hospital w-5 text-center"></i>
+                    <span>Hospital Settings</span>
+                </button>
+            </nav>
+
+            <!-- User Profile Box in Sidebar Footer -->
+            <div class="p-3.5 border-t border-[#E2EEF8] bg-[#F8FBFF]">
+                <div class="flex items-center justify-between gap-3 p-2 rounded-xl bg-white border border-[#E2EEF8] shadow-2xs">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <div id="user-profile-initials" class="w-8 h-8 rounded-lg bg-[#E6F6F7] text-[#087E8B] font-bold text-xs flex items-center justify-center border border-teal-200 shrink-0">
+                            DR
+                        </div>
+                        <div class="min-w-0">
+                            <p id="user-profile-name" class="text-xs font-bold text-[#142D4E] truncate">Staff User</p>
+                            <p id="user-profile-role" class="text-[10px] text-[#087E8B] font-semibold truncate">Doctor</p>
+                        </div>
+                    </div>
+                    <button onclick="handleLogout()" class="p-1.5 text-[#8395A7] hover:text-rose-600 text-xs transition-colors rounded-lg hover:bg-rose-50" title="Sign Out">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Main Viewport Area -->
+        <div class="flex-1 flex flex-col min-w-0">
+            <!-- Top Workspace Header Bar -->
+            <header class="min-h-[56px] sm:min-h-20 px-3 sm:px-6 py-2.5 sm:py-3.5 bg-white border-b border-[#E2EEF8] flex items-center justify-between gap-2 sm:gap-3 sticky top-0 z-20 shadow-2xs">
+                <!-- Left: Hamburger (mobile) + Breadcrumbs + Workspace Switcher Pill -->
+                <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                    <button onclick="toggleMobileSidebar()" class="md:hidden p-1.5 sm:p-2 rounded-xl text-[#142D4E] hover:bg-slate-100 shrink-0" aria-label="Open Navigation">
+                        <i class="fas fa-bars text-base sm:text-lg"></i>
+                    </button>
+
+                    <div class="flex flex-col gap-0.5 sm:gap-1 min-w-0">
+                        <!-- Breadcrumb Trail -->
+                        <div class="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-[#8395A7]">
+                            <span class="font-bold text-[#087E8B] flex items-center gap-1">
+                                <img src="/assets/branding/ayn_ruyah_icon.png" class="w-3.5 h-3.5 object-contain inline" alt="AYN RUYAH">
+                                AYN RUYAH
+                            </span>
+                            <span class="text-slate-300">/</span>
+                            <span id="breadcrumb-current-tab" class="font-semibold text-[#142D4E] capitalize">Dashboard</span>
+                        </div>
+
+                        <!-- Workspace Switcher Pill -->
+                        <div class="flex items-center gap-1.5 sm:gap-2">
+                            <div class="w-5 h-5 sm:w-6 sm:h-6 rounded-md bg-[#EAF4FF] p-0.5 border border-[#D0E3F3] shrink-0 flex items-center justify-center">
+                                <img id="header-hospital-logo" src="https://api.dicebear.com/7.x/identicon/svg?seed=Hospital" class="w-full h-full object-contain" alt="Hospital logo">
+                            </div>
+                            <select id="workspace-switcher" onchange="switchWorkspace(this.value)" class="bg-transparent font-bold text-xs sm:text-sm text-[#142D4E] outline-none cursor-pointer hover:text-[#087E8B] truncate max-w-[130px] sm:max-w-[280px] md:max-w-[340px]">
+                                <!-- Populated dynamically -->
+                            </select>
+                            <span id="header-hospital-badge" class="hidden sm:inline-block text-[9px] uppercase font-extrabold px-2 py-0.5 rounded-full bg-[#E6F6F7] text-[#087E8B] border border-teal-200 shrink-0">
+                                Tertiary Care
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Diagnostic Badges & CTA -->
+                <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+                    <!-- AI Status Pill -->
+                    <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E6FBF2] border border-[#B4F0D4] text-xs text-[#0E8558] font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+                        <span>AI Engine: <strong>EfficientNet-B4</strong> (5-Grade)</span>
+                    </div>
+
+                    <button onclick="switchNav('screening')" class="btn btn-primary text-[11px] sm:text-xs py-1.5 px-2.5 sm:px-3.5 h-8 sm:h-9 shrink-0 shadow-teal font-bold flex items-center gap-1.5">
+                        <i class="fas fa-plus text-[10px] sm:text-xs"></i> New Scan
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dynamic Tab Content Viewport -->
+            <main id="main-viewport" class="flex-1 p-4 sm:p-6 md:p-8 overflow-y-auto">
+                <!-- Content injected dynamically by dashboard.js, patients.js, screening.js, analytics.js, reports.js, settings.js -->
+            </main>
+        </div>
+    </div>
+
+
+    <!-- ==================== 3. MODALS ==================== -->
+
+    <!-- A. Register Indian Patient Modal -->
+    <div id="register-patient-modal" class="app-modal fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#0A1C33]/50 backdrop-blur-sm">
+        <div class="bg-white max-w-2xl w-full p-6 sm:p-8 rounded-[24px] max-h-[90vh] overflow-y-auto border border-[#D0E3F3] shadow-2xl">
+            <div class="flex items-center justify-between pb-4 border-b border-[#E2EEF8] mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-[#E6F6F7] flex items-center justify-center text-[#087E8B]">
+                        <i class="fas fa-user-plus text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#142D4E]">Register Indian Patient</h3>
+                        <p class="text-xs text-[#4B6584]">Enroll patient into hospital diabetic retinopathy screening registry</p>
+                    </div>
+                </div>
+                <button onclick="closeModal('register-patient-modal')" class="text-[#8395A7] hover:text-[#142D4E] p-2 rounded-lg hover:bg-slate-100" aria-label="Close Modal">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleRegisterPatientSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="reg-first-name" class="text-xs font-semibold text-[#142D4E] block mb-1">First Name *</label>
+                        <input type="text" id="reg-first-name" name="first_name" placeholder="e.g. Ramesh" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B] focus:ring-2 focus:ring-teal-100" required>
+                    </div>
+                    <div>
+                        <label for="reg-last-name" class="text-xs font-semibold text-[#142D4E] block mb-1">Last Name *</label>
+                        <input type="text" id="reg-last-name" name="last_name" placeholder="e.g. Sharma" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B] focus:ring-2 focus:ring-teal-100" required>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <label for="reg-gender" class="text-xs font-semibold text-[#142D4E] block mb-1">Gender *</label>
+                        <select id="reg-gender" name="gender" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B]">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="reg-dob" class="text-xs font-semibold text-[#142D4E] block mb-1">Date of Birth *</label>
+                        <input type="date" id="reg-dob" name="dob" value="1975-01-01" onchange="updateAgeFromDob(this.value)" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                    <div>
+                        <label for="reg-age" class="text-xs font-semibold text-[#142D4E] block mb-1">Age (Years) *</label>
+                        <input type="number" id="reg-age" name="age" value="50" min="1" max="115" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="reg-phone" class="text-xs font-semibold text-[#142D4E] block mb-1">Phone Number (+91) *</label>
+                        <input type="tel" id="reg-phone" name="phone" placeholder="+91 98765 43210" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                    <div>
+                        <label for="reg-email" class="text-xs font-semibold text-[#142D4E] block mb-1">Email Address</label>
+                        <input type="email" id="reg-email" name="email" placeholder="patient@example.com" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B]">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="reg-address" class="text-xs font-semibold text-[#142D4E] block mb-1">Street Address *</label>
+                    <input type="text" id="reg-address" name="address" placeholder="e.g. 42 Hazratganj, Sector B" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <label for="reg-city" class="text-xs font-semibold text-[#142D4E] block mb-1">City *</label>
+                        <input type="text" id="reg-city" name="city" placeholder="Lucknow" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                    <div>
+                        <label for="reg-state" class="text-xs font-semibold text-[#142D4E] block mb-1">State *</label>
+                        <input type="text" id="reg-state" name="state" placeholder="Uttar Pradesh" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                    <div>
+                        <label for="reg-pincode" class="text-xs font-semibold text-[#142D4E] block mb-1">PIN Code</label>
+                        <input type="text" id="reg-pincode" name="pincode" placeholder="226001" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-sm text-[#142D4E] outline-none focus:border-[#087E8B]">
+                    </div>
+                </div>
+
+                <!-- Diabetes Profile Section -->
+                <div class="pt-3 border-t border-[#E2EEF8] space-y-3">
+                    <h4 class="text-xs font-bold text-[#087E8B] uppercase tracking-wider">Diabetes Clinical Profile</h4>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="reg-diabetes-type" class="text-xs font-semibold text-[#142D4E] block mb-1">Diabetes Type *</label>
+                            <select id="reg-diabetes-type" name="diabetes_type" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none">
+                                <option value="Type 2">Type 2</option>
+                                <option value="Type 1">Type 1</option>
+                                <option value="Gestational">Gestational</option>
+                                <option value="Pre-diabetes">Pre-diabetes</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="reg-diabetes-duration" class="text-xs font-semibold text-[#142D4E] block mb-1">Duration (Years) *</label>
+                            <input type="number" step="0.5" id="reg-diabetes-duration" name="diabetes_duration" value="5.0" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none" required>
+                        </div>
+                        <div>
+                            <label for="reg-hba1c" class="text-xs font-semibold text-[#142D4E] block mb-1">HbA1c (%)</label>
+                            <input type="number" step="0.1" id="reg-hba1c" name="hba1c" placeholder="e.g. 7.5" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none">
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-6 pt-1 text-xs text-[#4B6584]">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="reg-insulin" name="insulin" class="rounded accent-[#087E8B]">
+                            <span>Insulin Dependent</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="reg-hypertension" name="hypertension" class="rounded accent-[#087E8B]">
+                            <span>Documented Hypertension</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Minor / Guardian Section -->
+                <div class="pt-3 border-t border-[#E2EEF8] space-y-3">
+                    <h4 class="text-xs font-bold text-blue-600 uppercase tracking-wider">Guardian Details (If Minor / Pediatric)</h4>
+                    <div class="grid grid-cols-3 gap-3">
+                        <input type="text" id="reg-guardian-name" name="guardian_name" placeholder="Guardian Full Name" class="bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none" aria-label="Guardian Full Name">
+                        <input type="text" id="reg-guardian-relation" name="guardian_relation" placeholder="Relation (e.g. Father)" class="bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none" aria-label="Guardian Relation">
+                        <input type="tel" id="reg-guardian-phone" name="guardian_phone" placeholder="Guardian Phone" class="bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none" aria-label="Guardian Phone">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="reg-notes" class="text-xs font-semibold text-[#142D4E] block mb-1">Clinical Remarks & Comorbidities</label>
+                    <textarea id="reg-notes" name="notes" rows="2" placeholder="Relevant ophthalmological or medical history..." class="w-full bg-white border border-[#D0E3F3] rounded-xl p-3 text-xs text-[#142D4E] outline-none"></textarea>
+                </div>
+
+                <div class="pt-4 flex gap-3">
+                    <button type="button" onclick="closeModal('register-patient-modal')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-[#4B6584] py-3 rounded-xl text-xs font-semibold transition-all">
+                        Cancel
+                    </button>
+                    <button type="submit" class="flex-1 bg-[#087E8B] hover:bg-[#066671] text-white font-bold py-3 rounded-xl text-xs transition-all shadow-md">
+                        <i class="fas fa-check-circle mr-1.5"></i> Complete Patient Registration
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- B. View Patient Profile Modal -->
+    <div id="view-patient-modal" class="app-modal fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#0A1C33]/50 backdrop-blur-sm">
+        <div class="bg-white max-w-4xl w-full p-6 sm:p-8 rounded-[24px] max-h-[90vh] overflow-y-auto border border-[#D0E3F3] shadow-2xl relative">
+            <button onclick="closeModal('view-patient-modal')" class="absolute top-6 right-6 text-[#8395A7] hover:text-[#142D4E] p-2 rounded-lg hover:bg-slate-100" aria-label="Close Profile Modal">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div id="view-patient-modal-content">
+                <!-- Dynamically populated by patients.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- C. Add Staff Modal -->
+    <div id="add-staff-modal" class="app-modal fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#0A1C33]/50 backdrop-blur-sm">
+        <div class="bg-white max-w-md w-full p-6 sm:p-8 rounded-[24px] border border-[#D0E3F3] shadow-2xl">
+            <div class="flex items-center justify-between pb-4 border-b border-[#E2EEF8] mb-6">
+                <h3 class="text-lg font-bold text-[#142D4E] flex items-center gap-2">
+                    <i class="fas fa-user-plus text-[#087E8B]"></i> Add Medical Staff
+                </h3>
+                <button onclick="closeModal('add-staff-modal')" class="text-[#8395A7] hover:text-[#142D4E] p-1.5 rounded-lg hover:bg-slate-100" aria-label="Close Staff Modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form onsubmit="handleAddStaffSubmit(event)" class="space-y-3.5">
+                <div>
+                    <label for="staff-full-name" class="text-xs font-semibold text-[#142D4E] block mb-1">Full Name *</label>
+                    <input type="text" id="staff-full-name" name="full_name" placeholder="Dr. S. K. Batra" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                </div>
+                <div>
+                    <label for="staff-role" class="text-xs font-semibold text-[#142D4E] block mb-1">Staff Role *</label>
+                    <select id="staff-role" name="role" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none">
+                        <option value="ophthalmologist">Ophthalmologist / Specialist</option>
+                        <option value="screening_operator">Screening Operator</option>
+                        <option value="hospital_admin">Hospital Administrator</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="staff-username" class="text-xs font-semibold text-[#142D4E] block mb-1">Username *</label>
+                    <input type="text" id="staff-username" name="username" placeholder="dr_batra" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                </div>
+                <div>
+                    <label for="staff-password" class="text-xs font-semibold text-[#142D4E] block mb-1">Password *</label>
+                    <input type="password" id="staff-password" name="password" placeholder="••••••••" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                </div>
+                <div>
+                    <label for="staff-email" class="text-xs font-semibold text-[#142D4E] block mb-1">Email *</label>
+                    <input type="email" id="staff-email" name="email" placeholder="staff@hospital.org" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                </div>
+                <div>
+                    <label for="staff-qualification" class="text-xs font-semibold text-[#142D4E] block mb-1">Qualifications / Credentials</label>
+                    <input type="text" id="staff-qualification" name="qualification" placeholder="MS (Ophthalmology), Vitreoretinal Fellow" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none">
+                </div>
+                <div class="pt-3 flex gap-3">
+                    <button type="button" onclick="closeModal('add-staff-modal')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-[#4B6584] py-2.5 rounded-xl text-xs font-semibold">
+                        Cancel
+                    </button>
+                    <button type="submit" class="flex-1 bg-[#087E8B] hover:bg-[#066671] text-white font-bold py-2.5 rounded-xl text-xs transition-all shadow-md">
+                        Add to Workspace
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- D. Onboard New Hospital Modal -->
+    <div id="onboard-hospital-modal" class="app-modal fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#0A1C33]/50 backdrop-blur-sm">
+        <div class="bg-white max-w-xl w-full p-6 sm:p-8 rounded-[24px] max-h-[90vh] overflow-y-auto border border-[#D0E3F3] shadow-2xl">
+            <div class="flex items-center justify-between pb-4 border-b border-[#E2EEF8] mb-6">
+                <h3 class="text-lg font-bold text-[#142D4E] flex items-center gap-2">
+                    <i class="fas fa-hospital text-[#087E8B]"></i> Onboard New Hospital Workspace
+                </h3>
+                <button onclick="closeModal('onboard-hospital-modal')" class="text-[#8395A7] hover:text-[#142D4E] p-1.5 rounded-lg hover:bg-slate-100" aria-label="Close Hospital Modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form onsubmit="handleOnboardHospitalSubmit(event)" class="space-y-3.5">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label for="hosp-id" class="text-xs font-semibold text-[#142D4E] block mb-1">Workspace ID (Slug) *</label>
+                        <input type="text" id="hosp-id" name="hospital_id" placeholder="e.g. aravind-madurai" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                    <div>
+                        <label for="hosp-reg-num" class="text-xs font-semibold text-[#142D4E] block mb-1">Registration #</label>
+                        <input type="text" id="hosp-reg-num" name="registration_number" placeholder="TN-HOSP-2022-8110" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label for="hosp-name" class="text-xs font-semibold text-[#142D4E] block mb-1">Hospital / Institute Full Name *</label>
+                    <input type="text" id="hosp-name" name="name" placeholder="Aravind Eye Hospital — Retina Division" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                </div>
+                <div>
+                    <label for="hosp-address" class="text-xs font-semibold text-[#142D4E] block mb-1">Address *</label>
+                    <input type="text" id="hosp-address" name="address" placeholder="1 Anna Nagar" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label for="hosp-city" class="text-xs font-semibold text-[#142D4E] block mb-1">City *</label>
+                        <input type="text" id="hosp-city" name="city" placeholder="Madurai" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                    <div>
+                        <label for="hosp-state" class="text-xs font-semibold text-[#142D4E] block mb-1">State *</label>
+                        <input type="text" id="hosp-state" name="state" placeholder="Tamil Nadu" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label for="hosp-email" class="text-xs font-semibold text-[#142D4E] block mb-1">Contact Email *</label>
+                        <input type="email" id="hosp-email" name="contact_email" placeholder="retina@aravind.org" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                    <div>
+                        <label for="hosp-phone" class="text-xs font-semibold text-[#142D4E] block mb-1">Contact Phone *</label>
+                        <input type="text" id="hosp-phone" name="contact_phone" placeholder="+91 452 4356100" class="w-full bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none focus:border-[#087E8B]" required>
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-[#E2EEF8] space-y-2">
+                    <h4 class="text-xs font-bold text-[#087E8B] uppercase">Primary Administrator</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <input type="text" id="hosp-admin-name" name="admin_name" placeholder="Admin Full Name" class="bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none" aria-label="Admin Full Name" required>
+                        <input type="text" id="hosp-admin-username" name="admin_username" placeholder="Username" class="bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none" aria-label="Admin Username" required>
+                        <input type="password" id="hosp-admin-password" name="admin_password" placeholder="Password" class="bg-white border border-[#D0E3F3] rounded-xl px-3 py-2 text-xs text-[#142D4E] outline-none" aria-label="Admin Password" required>
+                    </div>
+                </div>
+
+                <div class="pt-3 flex gap-3">
+                    <button type="button" onclick="closeModal('onboard-hospital-modal')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-[#4B6584] py-2.5 rounded-xl text-xs font-semibold">
+                        Cancel
+                    </button>
+                    <button type="submit" class="flex-1 bg-[#087E8B] hover:bg-[#066671] text-white font-bold py-2.5 rounded-xl text-xs transition-all shadow-md">
+                        Register Hospital
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div id="notification-toast-container" class="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Modular JavaScript Suite -->
+    <script src="/js/api.js?v=3.3"></script>
+    <script src="/js/state.js?v=3.3"></script>
+    <script src="/js/auth.js?v=3.3"></script>
+    <script src="/js/ui.js?v=3.3"></script>
+    <script src="/js/dashboard.js?v=3.3"></script>
+    <script src="/js/patients.js?v=3.3"></script>
+    <script src="/js/screening.js?v=3.3"></script>
+    <script src="/js/analytics.js?v=3.3"></script>
+    <script src="/js/reports.js?v=3.3"></script>
+    <script src="/js/settings.js?v=3.3"></script>
+    <script src="/js/app.js?v=3.3"></script>
+</body>
+</html>

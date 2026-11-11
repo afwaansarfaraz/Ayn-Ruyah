@@ -1,0 +1,12 @@
+# AYN RUYAH — Robots Exclusion Protocol
+# Public ophthalmology landing page is crawlable; private screening & patient medical records are strictly noindex.
+
+User-agent: *
+Allow: /$
+Allow: /assets/
+Allow: /favicon.ico
+
+# Disallow authenticated hospital screening routes and patient data
+Disallow: /api/
+
+Sitemap: https://aynruyah.health/sitemap.xml

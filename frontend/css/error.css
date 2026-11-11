@@ -1,0 +1,328 @@
+/* ==========================================================================
+   AYN RUYAH — Branded Error Pages Stylesheet
+   Medical Ophthalmology Design System
+   ========================================================================== */
+
+.error-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--bg-app);
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(8, 126, 139, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(20, 45, 78, 0.04) 0%, transparent 45%);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+}
+
+.error-header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(226, 238, 248, 0.8);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.error-header .brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  text-decoration: none;
+}
+
+.error-header .brand-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.error-header .brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-header .brand-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+  line-height: 1.1;
+}
+
+.error-header .brand-name span {
+  color: var(--color-primary-teal);
+}
+
+.error-header .brand-tagline {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-navy-muted);
+}
+
+.error-content-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.25rem;
+}
+
+.error-card {
+  width: 100%;
+  max-width: 620px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 16px 40px -10px rgba(20, 45, 78, 0.08);
+  padding: 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.error-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary-teal), #16A779, var(--color-primary-teal));
+}
+
+.error-visual-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+}
+
+.badge-404 {
+  background: var(--color-primary-teal-light);
+  color: var(--color-primary-teal);
+  border: 1px solid rgba(8, 126, 139, 0.2);
+}
+
+.badge-403 {
+  background: var(--dr-grade-2-bg);
+  color: var(--dr-grade-2);
+  border: 1px solid var(--dr-grade-2-border);
+}
+
+.badge-500 {
+  background: var(--dr-grade-4-bg);
+  color: var(--dr-grade-4);
+  border: 1px solid var(--dr-grade-4-border);
+}
+
+.error-illustration {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-illustration svg {
+  width: 100%;
+  height: 100%;
+}
+
+.error-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.error-description {
+  font-size: 0.975rem;
+  line-height: 1.6;
+  color: var(--color-navy-muted);
+  max-width: 480px;
+  margin: 0 auto 1.75rem;
+}
+
+.error-clinical-notice {
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.8125rem;
+  color: var(--color-navy-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.error-clinical-notice i {
+  font-size: 1.125rem;
+  color: var(--color-primary-teal);
+  flex-shrink: 0;
+}
+
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+}
+
+.btn-error-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-primary-teal);
+  color: #ffffff !important;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(8, 126, 139, 0.25);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-error-primary:hover {
+  background: var(--color-primary-teal-hover);
+  box-shadow: 0 6px 18px rgba(8, 126, 139, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-error-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  color: var(--color-navy) !important;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-xs);
+  cursor: pointer;
+}
+
+.btn-error-secondary:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--color-navy-subtle);
+  transform: translateY(-1px);
+}
+
+.error-quick-links {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.8125rem;
+}
+
+.error-quick-links a {
+  color: var(--color-primary-teal);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.error-quick-links a:hover {
+  color: var(--color-primary-teal-hover);
+  text-decoration: underline;
+}
+
+.error-footer {
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-navy-subtle);
+  border-top: 1px solid rgba(226, 238, 248, 0.8);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.error-footer span.arabic {
+  font-family: var(--font-arabic);
+  font-weight: 600;
+  color: var(--color-primary-teal);
+  margin-left: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .error-header {
+    padding: 0.875rem 1rem;
+  }
+  .error-header .brand-logo {
+    height: 32px;
+  }
+  .error-header .header-status {
+    display: none;
+  }
+  .error-content-container {
+    padding: 1.5rem 1rem;
+  }
+  .error-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--radius-xl);
+  }
+  .error-illustration {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1rem;
+  }
+  .error-title {
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
+  .error-description {
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+  .error-clinical-notice {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.75rem;
+  }
+  .error-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  .btn-error-primary, .btn-error-secondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.875rem;
+    padding: 0.7rem 1.25rem;
+  }
+  .error-quick-links {
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+  .error-footer {
+    padding: 1rem;
+    font-size: 0.7rem;
+  }
+}
